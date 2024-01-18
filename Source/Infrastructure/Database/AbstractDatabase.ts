@@ -1,8 +1,8 @@
 import { Knex, knex } from 'knex';
 import Transaction = Knex.Transaction;
 
-import { EnvironmentConfiguration } from '@/Config';
 import { ErrorDatabase, ErrorDatabaseKey } from '@/Common/Error';
+import { MigrationSource } from '@/Infrastructure/Database/Main/Migration';
 
 export type { Transaction };
 
@@ -29,32 +29,22 @@ export interface IErrorDatabase {
     message: string;
 }
 
-export class KnexDatabase {
-    private static _instance: KnexDatabase;
-    private readonly _config: Knex.Config;
+export class AbstractDatabase {
+    protected readonly _config: Knex.Config;
     private _database: Knex | undefined;
 
-    private constructor() {
-        this._config = {
-            client: 'pg',
-            connection: {
-                host: EnvironmentConfiguration.env.DB_HOST,
-                user: EnvironmentConfiguration.env.DB_USER,
-                password: EnvironmentConfiguration.env.DB_PASSWORD,
-                database: EnvironmentConfiguration.env.DB_NAME,
-                port: EnvironmentConfiguration.env.DB_PORT,
-            },
-            pool: {
-                min: 0,
-                max: 10,
-            },
-            acquireConnectionTimeout: 10000,
-        };
+    protected constructor(config: Knex.Config) {
+        this._config = config;
     }
 
-    public connect(): void {
+    public get database(): Knex | undefined {
+        return this._database;
+    }
+
+    public connect(): AbstractDatabase {
         try {
             this._database = knex(this._config);
+            return this;
         } catch (error) {
             throw new ErrorDatabase({
                 key: ErrorDatabaseKey.DB_CONNECTION_ERROR,
@@ -74,19 +64,23 @@ export class KnexDatabase {
         }
     }
 
-    public static getInstance(): KnexDatabase {
-        if (!KnexDatabase._instance)
-            KnexDatabase._instance = new KnexDatabase();
-        return KnexDatabase._instance;
-    }
-
-    get database(): Knex | undefined {
-        return this._database;
-    }
-
-    public checkIfDatabaseIsOnline(): Promise<boolean> {
+    public runMigrations(): Promise<unknown> {
         if (!this._database)
-            return Promise.resolve(false);
-        return this._database.raw('SELECT 1').then((): boolean => true).catch((): boolean => false);
+            throw new ErrorDatabase({
+                key: ErrorDatabaseKey.DB_NOT_CONNECTED
+            });
+        return this._database.migrate.latest({
+            migrationSource: new MigrationSource()
+        });
+    }
+
+    public rollbackAllMigration(): Promise<unknown> {
+        if (!this._database)
+            throw new ErrorDatabase({
+                key: ErrorDatabaseKey.DB_NOT_CONNECTED
+            });
+        return this._database.migrate.rollback({
+            migrationSource: new MigrationSource(),
+        }, true);
     }
 }

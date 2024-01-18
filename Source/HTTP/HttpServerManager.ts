@@ -28,9 +28,9 @@ export class HttpServerManager {
             trustProxy: true,
             ignoreDuplicateSlashes: true,
         });
-        this._routers = this._routers.concat(this.initializeRouter());
-        this._plugins = this._plugins.concat(this.initializePlugin());
-        this._hooks = this._hooks.concat(this.initializeHook());
+        this._routers = this.initializeRouter();
+        this._plugins = this.initializePlugin();
+        this._hooks = this.initializeHook();
         this.initialize();
     }
 
