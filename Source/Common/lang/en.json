@@ -4,11 +4,19 @@
     "stop": "{{name}} Stopped.",
     "redpanda": {
       "REDPANDA_PRODUCER_CONNECTED": "RedPanda Producer connected.",
-      "REDPANDA_PRODUCER_DISCONNECTED": "RedPanda Producer disconnected."
+      "REDPANDA_PRODUCER_DISCONNECTED": "RedPanda Producer disconnected.",
+      "REDPANDA_CONSUMER_CONNECTED": "RedPanda Consumer connected.",
+      "REDPANDA_CONSUMER_DISCONNECTED": "RedPanda Consumer disconnected."
     },
     "database": {
       "DB_CONNECTED": "Database connected.",
-      "DB_DISCONNECTED": "Database disconnected."
+      "DB_DISCONNECTED": "Database disconnected.",
+      "DB_MIGRATIONS_RUN": "Database migrations run.",
+      "DB_MIGRATIONS_ROLLBACK_ALL": "Database migrations rollback all."
+    },
+    "consumer": {
+      "CONSUMER_START": "Consumer started.",
+      "CONSUMER_STOP": "Consumer stopped."
     },
     "signal": {
       "SIGINT": "SIGINT (Ctrl-C) received."
@@ -38,6 +46,7 @@
       "KAFKA_PRODUCER_DISCONNECT_ERROR": "Kafka producer disconnect error.",
       "KAFKA_PRODUCER_SEND_ERROR": "Kafka producer send error.",
       "KAFKA_CONSUMER_CONNECTION_ERROR": "Kafka consumer connection error.",
+      "KAFKA_CONSUMER_IS_NOT_CONNECTED": "Kafka consumer is not connected.",
       "KAFKA_CONSUMER_SUBSCRIBE_ERROR": "Kafka consumer subscribe error.",
       "KAFKA_CONSUMER_DISCONNECT_ERROR": "Kafka consumer disconnect error."
     },
@@ -52,6 +61,9 @@
       "MODEL_NOT_UPDATED": "Model {{tableName}}  not updated.",
       "MODEL_NOT_DELETED": "Model {{tableName}} not deleted.",
       "OTHER_DATABASE_ERROR": "Other database error."
+    },
+    "errorUseCase": {
+      "PASSWORD_NOT_VALID": "The password is not valid."
     }
   },
   "http": {
@@ -63,11 +75,6 @@
     "handler": {
       "statusHandler": {
         "health": "OK"
-      },
-      "authHandler": {
-        "login": "Login successful.",
-        "logout": "Logout successful.",
-        "register": "Registration successful."
       }
     }
   }

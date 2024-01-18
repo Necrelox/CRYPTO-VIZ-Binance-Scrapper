@@ -1,1 +1,1 @@
-export * from './KafkaLoggerStrategy';
+export * from './RedPandaLoggerStrategy';

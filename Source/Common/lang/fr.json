@@ -4,11 +4,19 @@
     "stop": "{{name}} Arrêté",
     "redpanda": {
       "REDPANDA_PRODUCER_CONNECTED": "RedPanda Producer connecté.",
-      "REDPANDA_PRODUCER_DISCONNECTED": "RedPanda Producer déconnecté."
+      "REDPANDA_PRODUCER_DISCONNECTED": "RedPanda Producer déconnecté.",
+      "REDPANDA_CONSUMER_CONNECTED": "RedPanda Consumer connecté.",
+      "REDPANDA_CONSUMER_DISCONNECTED": "RedPanda Consumer déconnecté."
     },
     "database": {
       "DB_CONNECTED": "Database connectée.",
-      "DB_DISCONNECTED": "Database déconnectée."
+      "DB_DISCONNECTED": "Database déconnectée.",
+      "DB_MIGRATIONS_RUN": "Database migrations run.",
+      "DB_MIGRATIONS_ROLLBACK_ALL": "Database migrations rollback all."
+    },
+    "consumer": {
+      "CONSUMER_START": "Consommateur démarré.",
+      "CONSUMER_STOP": "Consommateur arrêté."
     },
     "signal": {
       "SIGINT": "SIGINT (Ctrl-C) reçu."
@@ -38,6 +46,7 @@
       "KAFKA_PRODUCER_DISCONNECT_ERROR": "Kafka producteur erreur de déconnexion.",
       "KAFKA_PRODUCER_SEND_ERROR": "Kafka producteur erreur d'envoi.",
       "KAFKA_CONSUMER_CONNECTION_ERROR": "Kafka consommateur erreur de connexion.",
+      "KAFKA_CONSUMER_IS_NOT_CONNECTED": "Kafka consommateur n'est pas connecté.",
       "KAFKA_CONSUMER_SUBSCRIBE_ERROR": "Kafka consommateur erreur d'abonnement.",
       "KAFKA_CONSUMER_DISCONNECT_ERROR": "Kafka consommateur erreur de déconnexion."
     },
@@ -52,6 +61,9 @@
       "MODEL_NOT_UPDATED": "Le modèle {{tableName}}  n'a pas été mis à jour.",
       "MODEL_NOT_DELETED": "Le modèle {{tableName}} n'a pas été supprimé.",
       "OTHER_DATABASE_ERROR": "Erreur de base de données inconnue."
+    },
+    "errorUseCase": {
+      "PASSWORD_NOT_VALID": "Le mot de passe n'est pas valide."
     }
   },
   "http": {
@@ -63,11 +75,6 @@
     "handler": {
       "statusHandler": {
         "health": "OK"
-      },
-      "authHandler": {
-        "login": "Connexion réussie.",
-        "logout": "Déconnexion réussie.",
-        "register": "Inscription réussie."
       }
     }
   }
