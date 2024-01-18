@@ -1,7 +1,9 @@
 const esbuild = require('esbuild');
 const alias = require('esbuild-plugin-alias');
+
 const { resolve, join } = require('path');
 const basePath = resolve(__dirname);
+
 const pkg = require('./package.json');
 const dependencies = pkg.dependencies ? Object.keys(pkg.dependencies) : [];
 const external = dependencies || [];
