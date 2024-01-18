@@ -1,7 +1,7 @@
 {
-  "name": "binance-consumer-microservice",
+  "name": "binance-producer-microservice",
   "version": "1.0.0",
-  "description": "Binance - Consumer - Microservice",
+  "description": "Binance - Producer - Microservice",
   "main": "Build/App.js",
   "types": "Build/App.d.ts",
   "scripts": {
@@ -24,15 +24,15 @@
   },
   "keywords": [
     "binance",
-    "binance-consumer",
-    "consumer"
+    "binance-producer",
+    "producer"
   ],
   "author": "Ruby",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Necrelox/CRYPTO-VIZ-Binance-Scrapper/issues"
+    "url": "https://github.com/Necrelox/CRYPTO-VIZ-Binance-Producer/issues"
   },
-  "homepage": "https://github.com/Necrelox/CRYPTO-VIZ-Binance-Scrapper#readme",
+  "homepage": "https://github.com/Necrelox/CRYPTO-VIZ-Binance-Producer#readme",
   "devDependencies": {
     "@types/jest": "^29.5.11",
     "@types/node": "^20.11.4",
