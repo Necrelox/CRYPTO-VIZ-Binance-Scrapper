@@ -2,7 +2,7 @@ import { WebSocket } from 'ws';
 
 import { BinanceProducer } from '@/Infrastructure/External/RedPanda/Producer';
 import { IDataConsumer } from '@/Consommer/Interface';
-import { IBinanceCryptoData } from '@/Data/DTO';
+import { IBinanceCryptoDataDTO } from '@/Data/DTO';
 
 export class BinanceConsumer implements IDataConsumer {
     private readonly _binanceProducer: BinanceProducer = new BinanceProducer();
@@ -24,7 +24,7 @@ export class BinanceConsumer implements IDataConsumer {
         });
 
         this._ws.on('message', async (message: ArrayBuffer): Promise<void> => {
-            const data: IBinanceCryptoData = JSON.parse(message.toString());
+            const data: IBinanceCryptoDataDTO = JSON.parse(message.toString());
             await this._binanceProducer.execute(data);
         });
     }

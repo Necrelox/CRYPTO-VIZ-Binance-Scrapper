@@ -1,4 +1,3 @@
-export * from './RedpandaProducer';
-export * from './Topics';
+export * from './RedPandaProducer';
 export * from './LoggerProducer';
 export * from './BinanceProducer';

@@ -1,2 +1,2 @@
 export * from './IOnRequestHttpDTO';
-export * from './IBinanceCryptoData';
+export * from './IBinanceCryptoDataDTO';
