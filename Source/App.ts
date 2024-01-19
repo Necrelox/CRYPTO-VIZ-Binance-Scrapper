@@ -9,7 +9,7 @@ import {
     packageJsonConfiguration
 } from '@/Config';
 import { HttpServerManager } from '@/HTTP/HttpServerManager';
-import { RedpandaProducer } from '@/Infrastructure/External/RedPanda/Producer';
+import { RedPandaProducer } from '@/Infrastructure/External/RedPanda/Producer';
 import { RedPandaLoggerStrategy } from '@/Common';
 import { MainDatabase } from '@/Infrastructure/Database/Main/MainDatabase';
 import { ErrorEntity } from '@/Common/Error';
@@ -23,7 +23,7 @@ class App {
     private readonly _consumerManager: ConsumerManager = new ConsumerManager();
 
     public async connectToRedPanda(): Promise<void> {
-        await RedpandaProducer.instance.connect();
+        await RedPandaProducer.instance.connect();
         BasaltLogger.addStrategy('RedPanda', new RedPandaLoggerStrategy());
         BasaltLogger.log(I18n.translate('app.redpanda.REDPANDA_PRODUCER_CONNECTED', Language.EN));
     }
@@ -81,7 +81,7 @@ class App {
     }
 
     public async disconnectFromRedPanda(): Promise<void> {
-        await RedpandaProducer.instance.disconnect();
+        await RedPandaProducer.instance.disconnect();
         if (BasaltLogger.strategies.has('RedPanda'))
             BasaltLogger.removeStrategy('RedPanda');
         BasaltLogger.log(I18n.translate('app.redpanda.REDPANDA_PRODUCER_DISCONNECTED', Language.EN));

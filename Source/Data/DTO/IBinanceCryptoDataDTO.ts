@@ -1,4 +1,4 @@
-export interface IBinanceCryptoData {
+export interface IBinanceCryptoDataDTO {
     e: string; // Event type
     E: number; // Event time
     s: string; // Symbol

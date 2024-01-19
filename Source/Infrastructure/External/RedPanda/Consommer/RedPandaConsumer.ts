@@ -1,32 +1,32 @@
-import { Kafka, Producer, ProducerRecord } from 'kafkajs';
+import { Consumer, Kafka } from 'kafkajs';
 
 import { kafkaConfiguration } from '@/Config';
 import { ErrorInfrastructure, ErrorInfrastructureKey } from '@/Common/Error';
 
-export class RedpandaProducer {
-    private static _instance: RedpandaProducer;
+export class RedPandaConsumer {
+    private static _instance: RedPandaConsumer;
     private readonly _kafka: Kafka;
-    private readonly _producer: Producer;
+    private readonly _consumer: Consumer;
     private _isConnected: boolean = false;
 
     private constructor() {
         this._kafka = new Kafka(kafkaConfiguration);
-        this._producer = this._kafka.producer();
+        this._consumer = this._kafka.consumer({ groupId: 'test-group' });
     }
 
-    public static get instance(): RedpandaProducer {
-        if (!RedpandaProducer._instance)
-            RedpandaProducer._instance = new RedpandaProducer();
-        return RedpandaProducer._instance;
+    public static get instance(): RedPandaConsumer {
+        if (!RedPandaConsumer._instance)
+            RedPandaConsumer._instance = new RedPandaConsumer();
+        return RedPandaConsumer._instance;
     }
 
     public async connect(): Promise<void> {
         try {
             this._isConnected = true;
-            await this._producer.connect();
+            await this._consumer.connect();
         } catch (error) {
             throw new ErrorInfrastructure({
-                key: ErrorInfrastructureKey.KAFKA_PRODUCER_CONNECTION_ERROR,
+                key: ErrorInfrastructureKey.KAFKA_CONSUMER_CONNECTION_ERROR,
                 detail: error
             });
         }
@@ -34,30 +34,33 @@ export class RedpandaProducer {
 
     public async disconnect(): Promise<void> {
         try {
-            await this._producer.disconnect();
+            await this._consumer.disconnect();
             this._isConnected = false;
         } catch (error) {
             throw new ErrorInfrastructure({
-                key: ErrorInfrastructureKey.KAFKA_PRODUCER_DISCONNECT_ERROR,
+                key: ErrorInfrastructureKey.KAFKA_CONSUMER_DISCONNECT_ERROR,
                 detail: error
             });
         }
     }
 
-    public async send(record: ProducerRecord): Promise<void> {
+    public async subscribe(topics: string[]): Promise<void> {
         try {
             if (!this._isConnected)
                 throw new ErrorInfrastructure({
-                    key: ErrorInfrastructureKey.KAFKA_PRODUCER_IS_NOT_CONNECTED
+                    key: ErrorInfrastructureKey.KAFKA_CONSUMER_IS_NOT_CONNECTED
                 });
-            await this._producer.send(record);
+            await this._consumer.subscribe({
+                topics,
+                fromBeginning: true
+            });
         } catch (error) {
             if (!this._isConnected)
                 throw new ErrorInfrastructure({
-                    key: ErrorInfrastructureKey.KAFKA_PRODUCER_IS_NOT_CONNECTED
+                    key: ErrorInfrastructureKey.KAFKA_CONSUMER_IS_NOT_CONNECTED
                 });
             throw new ErrorInfrastructure({
-                key: ErrorInfrastructureKey.KAFKA_PRODUCER_SEND_ERROR,
+                key: ErrorInfrastructureKey.KAFKA_CONSUMER_SUBSCRIBE_ERROR,
                 detail: error
             });
         }

@@ -1,1 +1,1 @@
-export * from './RedpandaConsumer';
+export * from './RedPandaConsumer';
