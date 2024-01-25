@@ -1,1 +1,1 @@
-# CRYPTO-VIZ-Binance-Producer
+# CRYPTO VIZ - Producer

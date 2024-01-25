@@ -3,8 +3,8 @@ import { Consumer, Kafka } from 'kafkajs';
 import { kafkaConfiguration } from '@/Config';
 import { ErrorInfrastructure, ErrorInfrastructureKey } from '@/Common/Error';
 
-export class RedPandaConsumer {
-    private static _instance: RedPandaConsumer;
+export class RedpandaConsumer {
+    private static _instance: RedpandaConsumer;
     private readonly _kafka: Kafka;
     private readonly _consumer: Consumer;
     private _isConnected: boolean = false;
@@ -14,10 +14,10 @@ export class RedPandaConsumer {
         this._consumer = this._kafka.consumer({ groupId: 'test-group' });
     }
 
-    public static get instance(): RedPandaConsumer {
-        if (!RedPandaConsumer._instance)
-            RedPandaConsumer._instance = new RedPandaConsumer();
-        return RedPandaConsumer._instance;
+    public static get instance(): RedpandaConsumer {
+        if (!RedpandaConsumer._instance)
+            RedpandaConsumer._instance = new RedpandaConsumer();
+        return RedpandaConsumer._instance;
     }
 
     public async connect(): Promise<void> {

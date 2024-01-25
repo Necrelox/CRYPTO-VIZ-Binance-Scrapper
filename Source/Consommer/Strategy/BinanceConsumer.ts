@@ -1,6 +1,6 @@
 import { WebSocket } from 'ws';
 
-import { BinanceProducer } from '@/Infrastructure/External/RedPanda/Producer';
+import { BinanceProducer } from '@/Infrastructure/RedPanda/Producer';
 import { IDataConsumer } from '@/Consommer/Interface';
 import { IBinanceCryptoDataDTO } from '@/Data/DTO';
 
