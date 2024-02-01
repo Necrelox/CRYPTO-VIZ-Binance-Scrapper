@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.1](https://github.com/Necrelox/CRYPTO-VIZ-Producer/compare/v1.0.0...v1.0.1) (2024-02-01)
+
+
+### Build System
+
+* improve scripts ([1a2fd03](https://github.com/Necrelox/CRYPTO-VIZ-Producer/commit/1a2fd03d89848765cb7e29f99a89f035d9b615ea))
+
+
+### Continuous Integration
+
+* add dockerfile + workflow file ([d645634](https://github.com/Necrelox/CRYPTO-VIZ-Producer/commit/d6456342bb9823fb3e83c249bdb4460fc4cebf7d))
+
 ## 1.0.0 (2024-02-01)
 
 
