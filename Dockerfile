@@ -14,4 +14,4 @@ WORKDIR /
 COPY --from=builder /build/node_modules ./node_modules
 COPY --from=builder /build/package.json ./package.json
 COPY --from=builder /build/Build ./Build
-CMD npm run prod::migrate && npm run prod::seed && npm run prod::start
+CMD npm run prod::start
