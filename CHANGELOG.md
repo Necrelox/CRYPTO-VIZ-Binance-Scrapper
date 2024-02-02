@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/Necrelox/CRYPTO-VIZ-Producer/compare/v1.0.1...v1.0.2) (2024-02-02)
+
+
+### Bug Fixes
+
+* correction of dockerfile ([70d5bc2](https://github.com/Necrelox/CRYPTO-VIZ-Producer/commit/70d5bc20ce4f64fcbfd5ecc58c4ea7fc8e5b4126))
+
 ## [1.0.1](https://github.com/Necrelox/CRYPTO-VIZ-Producer/compare/v1.0.0...v1.0.1) (2024-02-01)
 
 
