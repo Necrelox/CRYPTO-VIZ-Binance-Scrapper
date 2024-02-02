@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Necrelox/CRYPTO-VIZ-Producer/compare/v1.0.2...v1.1.0) (2024-02-02)
+
+
+### Features
+
+* add check binance data ([2a2e30b](https://github.com/Necrelox/CRYPTO-VIZ-Producer/commit/2a2e30bdcd19a746a28951e0d4aefb4a7cb5b61f))
+
 ## [1.0.2](https://github.com/Necrelox/CRYPTO-VIZ-Producer/compare/v1.0.1...v1.0.2) (2024-02-02)
 
 
