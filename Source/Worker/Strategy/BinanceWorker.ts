@@ -1,10 +1,10 @@
 import { WebSocket } from 'ws';
 
 import { BinanceProducer } from '@/Infrastructure/RedPanda/Producer';
-import { IDataConsumer } from '@/Consommer/Interface';
+import { IDataWorker } from '@/Worker/Interface';
 import { IBinanceCryptoDataKline, IBinanceInitDTO } from '@/Data/DTO';
 
-export class BinanceConsumer implements IDataConsumer {
+export class BinanceWorker implements IDataWorker {
     private readonly _binanceProducer: BinanceProducer = new BinanceProducer();
     private _ws: WebSocket | undefined;
     private readonly _params: string[] = [
