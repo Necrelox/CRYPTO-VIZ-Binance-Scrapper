@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/Necrelox/CRYPTO-VIZ-Producer/compare/v1.1.0...v1.1.1) (2024-02-15)
+
+
+### Bug Fixes
+
+* update data consumer ([3c26b34](https://github.com/Necrelox/CRYPTO-VIZ-Producer/commit/3c26b34da002e0162c6eef1265814273c05aa482))
+
 ## [1.1.0](https://github.com/Necrelox/CRYPTO-VIZ-Producer/compare/v1.0.2...v1.1.0) (2024-02-02)
 
 
