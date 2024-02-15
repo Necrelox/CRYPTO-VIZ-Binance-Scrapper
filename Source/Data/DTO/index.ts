@@ -1,2 +1,2 @@
-export * from './IBinanceCryptoDataDTO';
+export * from './IBinanceCryptoDataKline';
 export * from './IBinanceInitDTO';
