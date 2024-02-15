@@ -2,15 +2,15 @@ import { WebSocket } from 'ws';
 
 import { BinanceProducer } from '@/Infrastructure/RedPanda/Producer';
 import { IDataConsumer } from '@/Consommer/Interface';
-import { IBinanceCryptoDataDTO, IBinanceInitDTO } from '@/Data/DTO';
+import { IBinanceCryptoDataKline, IBinanceInitDTO } from '@/Data/DTO';
 
 export class BinanceConsumer implements IDataConsumer {
     private readonly _binanceProducer: BinanceProducer = new BinanceProducer();
     private _ws: WebSocket | undefined;
     private readonly _params: string[] = [
-        'btcusdt@ticker',
-        'ethusdt@ticker',
-        'ltcusdt@ticker',
+        'btcusdt@kline_1s',
+        'ethusdt@kline_1s',
+        'ltcusdt@kline_1s',
     ];
 
     public start(): void {
@@ -24,9 +24,9 @@ export class BinanceConsumer implements IDataConsumer {
         });
 
         this._ws.on('message', async (message: ArrayBuffer): Promise<void> => {
-            const data: IBinanceCryptoDataDTO | IBinanceInitDTO = JSON.parse(message.toString());
-            if ((data as IBinanceCryptoDataDTO).e === '24hrTicker')
-                await this._binanceProducer.execute(data as IBinanceCryptoDataDTO);
+            const data: IBinanceCryptoDataKline | IBinanceInitDTO = JSON.parse(message.toString());
+            if ((data as IBinanceCryptoDataKline).e === 'kline')
+                await this._binanceProducer.execute(data as IBinanceCryptoDataKline);
         });
     }
 
